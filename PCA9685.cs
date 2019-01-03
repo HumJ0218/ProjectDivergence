@@ -1,4 +1,4 @@
-//  C# code by: HumJ0218 @ GitHub
+//  Author: HumJ0218 @ GitHub
 //  From python code: https://github.com/adafruit/Adafruit_Python_PCA9685
 
 using System;
@@ -40,6 +40,7 @@ namespace HumphreyJ.NetCore.Adafruit.PCA9685PwmDriver
         const int INVRT = 0x10;
         const int OUTDRV = 0x04;
 
+        //  I2C Device
         private readonly I2cDevice _device;
 
         /// <summary>
@@ -61,7 +62,7 @@ namespace HumphreyJ.NetCore.Adafruit.PCA9685PwmDriver
                 this._device = new System.Device.I2c.Drivers.Windows10I2cDevice(settings);
             }
 
-            this.set_all_pwm(0, 0);
+            this.SetAllPwm(0, 0);
             this._device.Write(new byte[] { MODE2, OUTDRV });
             this._device.Write(new byte[] { MODE1, ALLCALL });
             Thread.Sleep(5);  // wait for oscillator
@@ -70,7 +71,6 @@ namespace HumphreyJ.NetCore.Adafruit.PCA9685PwmDriver
             mode1 = mode1 & ~SLEEP;  // wake up (reset sleep)
             this._device.Write(new byte[] { MODE1, (byte)mode1 });
             Thread.Sleep(5);  // wait for oscillator
-
 
         }
 
