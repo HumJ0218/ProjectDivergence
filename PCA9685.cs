@@ -46,6 +46,7 @@ namespace HumphreyJ.NetCore.Adafruit.PCA9685PwmDriver
         /// Initialize the PCA9685.
         /// </summary>
         /// <param name="address"></param>
+        /// <param name="busId"></param>
         public PCA9685(int address = PCA9685_ADDRESS, int busId = 0)
         {
 
