@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Threading;
 
-namespace HumphreyJ.NetCore.Adafruit.PCA9685PwmDriver
+namespace HumphreyJ.NetCore.PCA9685PwmDriver
 {
     /// <summary>
     /// PCA9685 PWM LED/servo controller.
