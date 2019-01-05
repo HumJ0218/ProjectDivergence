@@ -13,10 +13,10 @@ namespace HumphreyJ.NetCore.Adafruit.PCA9685PwmDriver
     /// <summary>
     /// PCA9685 PWM LED/servo controller.
     /// </summary>
-    class PCA9685
+    public class PCA9685
     {
 
-        //  Registers/etc:
+        // Registers/etc:
         const int PCA9685_ADDRESS = 0x40;
         const int MODE1 = 0x00;
         const int MODE2 = 0x01;
@@ -33,14 +33,14 @@ namespace HumphreyJ.NetCore.Adafruit.PCA9685PwmDriver
         const int ALL_LED_OFF_L = 0xFC;
         const int ALL_LED_OFF_H = 0xFD;
 
-        //  Bits:
+        // Bits:
         const int RESTART = 0x80;
         const int SLEEP = 0x10;
         const int ALLCALL = 0x01;
         const int INVRT = 0x10;
         const int OUTDRV = 0x04;
 
-        //  I2C Device
+        // I2C Device
         private readonly I2cDevice _device;
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace HumphreyJ.NetCore.Adafruit.PCA9685PwmDriver
         public PCA9685(int address = PCA9685_ADDRESS, int busId = 0)
         {
 
-            //  Setup I2C interface for the device.
+            // Setup I2C interface for the device.
             var settings = new I2cConnectionSettings(busId, address);
             try
             {
@@ -65,12 +65,12 @@ namespace HumphreyJ.NetCore.Adafruit.PCA9685PwmDriver
             this.SetAllPwm(0, 0);
             this._device.Write(new byte[] { MODE2, OUTDRV });
             this._device.Write(new byte[] { MODE1, ALLCALL });
-            Thread.Sleep(5);  // wait for oscillator
+            Thread.Sleep(5); // wait for oscillator
 
             int mode1 = this._device.ReadByte();
-            mode1 = mode1 & ~SLEEP;  // wake up (reset sleep)
+            mode1 = mode1 & ~SLEEP; // wake up (reset sleep)
             this._device.Write(new byte[] { MODE1, (byte)mode1 });
-            Thread.Sleep(5);  // wait for oscillator
+            Thread.Sleep(5); // wait for oscillator
 
         }
 
@@ -80,8 +80,8 @@ namespace HumphreyJ.NetCore.Adafruit.PCA9685PwmDriver
         /// <param name="freq_hz"></param>
         public void SetPwmFrequency(int freq_hz)
         {
-            var prescaleval = 25000000.0;    // 25MHz
-            prescaleval /= 4096.0;       // 12-bit
+            var prescaleval = 25000000.0; // 25MHz
+            prescaleval /= 4096.0; // 12-bit
             prescaleval /= freq_hz;
             prescaleval -= 1.0;
             Debug.Print($"Setting PWM frequency to {freq_hz} Hz");
@@ -91,8 +91,8 @@ namespace HumphreyJ.NetCore.Adafruit.PCA9685PwmDriver
             Debug.Print($"Final pre-scale: {prescale}");
 
             var oldmode = this._device.ReadByte();
-            var newmode = (oldmode & 0x7F) | 0x10;    // sleep
-            this._device.Write(new byte[] { MODE1, (byte)newmode });  // go to sleep
+            var newmode = (oldmode & 0x7F) | 0x10; // sleep
+            this._device.Write(new byte[] { MODE1, (byte)newmode }); // go to sleep
             this._device.Write(new byte[] { PRESCALE, (byte)prescale });
             this._device.Write(new byte[] { MODE1, oldmode });
             Thread.Sleep(5);
