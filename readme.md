@@ -1,5 +1,7 @@
 From python code: https://github.com/adafruit/Adafruit_Python_PCA9685
 
+========
+
 参考 Adafruit 提供的 python 版驱动程序编写，调用方式与其大体相同。
 
 在 Raspberry Pi 3B+ 上的 Raspbian 测试通过。
