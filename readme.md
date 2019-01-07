@@ -32,4 +32,4 @@ From python code: https://github.com/adafruit/Adafruit_Python_PCA9685
 
 * 通道号为 0 起始的 16 个通道，即 0 到 15
 
-* 后两个参数 on, off 为把每个 PWM tick 分成 2 ^ 12 = 4096 子刻后的“设置为高电平”、“设置为低电平”的子刻序号，也是从 0 开始，即 0 到 4095
+* 后两个参数 on, off 是把每个 PWM tick 分成 2 ^ 12 = 4096 子刻后的“设置为高电平”、“设置为低电平”的子刻序号，也是从 0 开始，即 0 到 4095
