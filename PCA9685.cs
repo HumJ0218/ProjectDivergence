@@ -78,7 +78,7 @@ namespace HumphreyJ.NetCore.PCA9685PwmDriver
         /// Set the PWM frequency to the provided value in hertz.
         /// </summary>
         /// <param name="freq_hz"></param>
-        public void SetPwmFrequency(int freq_hz)
+        public void SetPwmFrequency(double freq_hz)
         {
             var prescaleval = 25000000.0; // 25MHz
             prescaleval /= 4096.0; // 12-bit
@@ -87,7 +87,7 @@ namespace HumphreyJ.NetCore.PCA9685PwmDriver
             Debug.Print($"Setting PWM frequency to {freq_hz} Hz");
             Debug.Print($"Estimated pre-scale: {prescaleval}");
 
-            var prescale = (int)(Math.Floor(prescaleval + 0.5));
+            var prescale = (int)(Math.Round(prescaleval));
             Debug.Print($"Final pre-scale: {prescale}");
 
             var oldmode = this._device.ReadByte();
