@@ -80,20 +80,31 @@ namespace HumphreyJ.NetCore.PCA9685PwmDriver
         /// <param name="freq_hz"></param>
         public void SetPwmFrequency(double freq_hz)
         {
-            var prescaleval = 25000000.0; // 25MHz
-            prescaleval /= 4096.0; // 12-bit
-            prescaleval /= freq_hz;
-            prescaleval -= 1.0;
+            //var prescaleval = 25000000.0; // 25MHz
+            //prescaleval /= 4096.0; // 12-bit
+            //prescaleval /= freq_hz;
+            //prescaleval -= 1.0;
+
+            var prescaleval = 6103.515625 / freq_hz - 1; 
             Debug.Print($"Setting PWM frequency to {freq_hz} Hz");
             Debug.Print($"Estimated pre-scale: {prescaleval}");
 
-            var prescale = (int)(Math.Round(prescaleval));
+            var prescale = (byte)Math.Round(prescaleval);
             Debug.Print($"Final pre-scale: {prescale}");
 
+            SetPwmFrequency(prescale);
+        }
+
+        /// <summary>
+        /// Set the PWM frequency to the provided value in prescale.
+        /// </summary>
+        /// <param name="prescale"></param>
+        public void SetPwmFrequency(byte prescale)
+        {
             var oldmode = this._device.ReadByte();
             var newmode = (oldmode & 0x7F) | 0x10; // sleep
             this._device.Write(new byte[] { MODE1, (byte)newmode }); // go to sleep
-            this._device.Write(new byte[] { PRESCALE, (byte)prescale });
+            this._device.Write(new byte[] { PRESCALE, prescale });
             this._device.Write(new byte[] { MODE1, oldmode });
             Thread.Sleep(5);
 
