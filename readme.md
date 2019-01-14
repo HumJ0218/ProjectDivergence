@@ -1,4 +1,5 @@
 From python code: https://github.com/adafruit/Adafruit_Python_PCA9685
+PCA9685 data sheet: https://www.nxp.com/docs/en/data-sheet/PCA9685.pdf
 
 --------
 
@@ -19,9 +20,14 @@ From python code: https://github.com/adafruit/Adafruit_Python_PCA9685
 配置 PWM 频率
 --------
 
-`pca9685.SetPwmFrequency(50); // 设置设备的 PWM 频率为 50Hz`
+`pca9685.SetPwmFrequency(50.0); // 设置设备的 PWM 频率为 50Hz （使用 double 型参数）`
+`pca9685.SetPwmFrequency(121); // 设置设备的 PWM 频率为 50Hz （使用 byte 型参数直接指定 prescale 的值，具体计算公式见下方说明）`
 
-* 根据 NXP 的文档说明，PWM 频率范围约为 24Hz 至 1526Hz ，默认时 PRE_SCALE 寄存器值为 0x1E 也就是约 200Hz
+* prescale = Round( osc_clock / 4096 / update_rate  - 1 )
+其中，osc_clock 为时钟频率，默认是 25MHz；update_rate 是 PWM 频率
+
+* PWM 频率最大约为 1526Hz @ prescale = 3 (0x03)
+* PWM 频率最小约为 24Hz @ prescale = 255 (0xFF)
 
 * 所有通道均使用相同的 PWM 频率
 
