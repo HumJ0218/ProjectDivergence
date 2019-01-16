@@ -25,6 +25,7 @@ PCA9685 data sheet: https://www.nxp.com/docs/en/data-sheet/PCA9685.pdf
 `pca9685.SetPwmFrequency(121); // 设置设备的 PWM 频率为 50Hz （使用 byte 型参数直接指定 prescale 的值，具体计算公式见下方说明）`
 
 * prescale = Round( osc_clock / 4096 / update_rate  - 1 )
+
 其中，osc_clock 为时钟频率，默认是 25MHz；update_rate 是 PWM 频率
 
 * PWM 频率最大约为 1526Hz @ prescale = 3 (0x03)
