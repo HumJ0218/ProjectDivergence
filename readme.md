@@ -4,9 +4,9 @@ PCA9685 data sheet: https://www.nxp.com/docs/en/data-sheet/PCA9685.pdf
 
 --------
 
-参考 Adafruit 提供的 python 版驱动程序编写，调用方式与其大体相同。
+参考 Adafruit 提供的 python 版驱动程序编写，调用方式与其大体相同
 
-在 Raspberry Pi 3B+ 上的 Raspbian 测试通过。
+在 Raspberry Pi 3B+ 上的 Raspbian 测试通过
 
 
 实例化对象
@@ -21,16 +21,16 @@ PCA9685 data sheet: https://www.nxp.com/docs/en/data-sheet/PCA9685.pdf
 配置 PWM 频率
 --------
 
-`pca9685.SetPwmFrequency(50.0); // 设置设备的 PWM 频率为 50Hz （使用 double 型参数）`
+`pca9685.SetPwmFrequency(50.0); // 设置设备的 PWM 频率为 50Hz ( 使用 double 类型参数 )`
 
-`pca9685.SetPwmFrequency(121); // 设置设备的 PWM 频率为 50Hz （使用 byte 型参数直接指定 prescale 的值，具体计算公式见下方说明）`
+`pca9685.SetPwmFrequency(121); // 设置设备的 PWM 频率为 50Hz (使用 byte 类型参数直接指定 prescale 的值, 具体计算公式见下方说明 )`
 
 * prescale = Round( osc_clock / 4096 / update_rate  - 1 )
 
-其中，osc_clock 为时钟频率，默认是 25MHz；update_rate 是 PWM 频率
+其中, osc_clock 为时钟频率, 默认是 25MHz; update_rate 是 PWM 频率
 
-* PWM 频率最大约为 1526Hz @ prescale = 3 (0x03)
-* PWM 频率最小约为 24Hz @ prescale = 255 (0xFF)
+* PWM 频率最大约为 1526Hz @ prescale = 3 ( 0x03 )
+* PWM 频率最小约为 24Hz @ prescale = 255 ( 0xFF )
 
 * 所有通道均使用相同的 PWM 频率
 
@@ -41,6 +41,15 @@ PCA9685 data sheet: https://www.nxp.com/docs/en/data-sheet/PCA9685.pdf
 
 `SetAllPwm(3072, 2048); // 设置所有通道的波形为  ￣￣￣￣＿＿￣￣`
 
-* 通道号为 0 起始的 16 个通道，即 0 到 15
+* 通道号为 0 起始的 16 个通道, 即 0 到 15
 
-* 后两个参数 on, off 是把每个 PWM tick 分成 2 ^ 12 = 4096 子刻后的“设置为高电平”、“设置为低电平”的子刻序号，也是从 0 开始，即 0 到 4095
+* 后两个参数 on, off 是把每个 PWM tick 分成 2 ^ 12 = 4096 子刻后的 "设置为高电平" , "设置为低电平" 的子刻序号, 也是从 0 开始, 即 0 到 4095
+
+控制舵机
+--------
+
+舵机使用 PPM 信号控制 ( 并不是 PWM, 但可以用 PWM 模拟 ) , 一般情况下频率为 50Hz. 同时规定脉冲宽度为 1ms - 2ms 之间时, 对应的舵机角度为 0 - 180°
+
+所以对应的 prescale 值为 121 ( 实际频率约为 50.029Hz ) . 间隔为 20ms. 此时空占比应约为 1/20 - 2/20 即 204.8/4096 - 409.6/4096
+
+由于频率比实际要求略高, 所以空占比上取整. 设置 on 的值为 0 时, off 的值为 205 - 410 即可
