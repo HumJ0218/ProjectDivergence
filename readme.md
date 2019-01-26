@@ -1,6 +1,6 @@
 基于 System.Device.Gpio 库编写的各种外围设备驱动程序
 
-关于 System.Device.Gpio , 请前往 https://dotnet.myget.org/feed/dotnet-corefxlab/package/nuget/System.Devices.Gpio 查看
+关于 System.Device.Gpio , 请前往 [dotnet.myget.org](https://dotnet.myget.org/feed/dotnet-corefxlab/package/nuget/System.Devices.Gpio) 查看
 
 --------
 
