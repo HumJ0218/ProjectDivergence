@@ -11,7 +11,7 @@
   * GPIO
   * I2C
     * NXP
-      * [PCA9685](https://github.com/HumJ0218/HumphreyJ.NetCore.Devices/blob/master/Docs/PCA9685.md) `NXP PCA9685 - 16 通道 12 比特 I2C 接口 PWM 发生器`
+      * [PCA9685](Docs/PCA9685.md) `NXP PCA9685 - 16 通道 12 比特 I2C 接口 PWM 发生器`
   * SPI
     * Waveshare
       * EPD2in3Hat `微雪 2.13 吋单色电子墨水屏模块`
