@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs
+/HumphreyJ.NetCore.Devices/obj
+/Tests/EPD2in13test/obj
+/Tests/PCA9685test/obj
+/HumphreyJ.NetCore.Devices/bin/Debug/netcoreapp2.2
