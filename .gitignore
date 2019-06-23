@@ -7,3 +7,6 @@
 /Tests/EPD2in13test/obj
 /Tests/PCA9685test/obj
 /HumphreyJ.NetCore.Devices/bin/Debug/netcoreapp2.2
+/MatrixKeyboardTest/obj
+/Tests/EPD2in13test/bin/Debug/netcoreapp2.2
+/Tests/PCA9685test/bin/Debug/netcoreapp2.2
