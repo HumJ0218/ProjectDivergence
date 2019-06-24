@@ -21,6 +21,6 @@
 
 有了 System.Device.Gpio 来操作各种外围设备 , 加上 .Net Core 的跨平台能力 , 终于可以开心地用 C# 写树莓派了!!!
 
-部分代码即将或已合并进 [dotnet/iot](https://github.com/dotnet/iot) 项目中，此处将不再更新，涉及的代码有：
+下列即将或已合并进 [dotnet/iot](https://github.com/dotnet/iot) 项目中，此处将不再更新：
 * PCA9685
 * MatrixKeyboard
