@@ -55,3 +55,5 @@ LED 数据帧是 4 个字节，第一个字节是 `0b111xxxxx`，低 5 位是 `g
 http://www.witop-tech.com/compare-apa102-sk9822-led/
 https://www.instructables.com/id/Compare-SK6822-WS2813-APA102-SK9822/
 https://www.rose-lighting.com/the-difference-of-hd107s-apa107-sk9822led/
+https://www.linkedin.com/pulse/do-you-know-difference-apa102-apa107hd107s-sk9822-rose-lighting?articleId=6564308857936580608
+
