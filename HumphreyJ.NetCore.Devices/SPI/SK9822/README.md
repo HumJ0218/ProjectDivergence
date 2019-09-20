@@ -51,3 +51,5 @@ LED 数据帧是 4 个字节，第一个字节是 `0b111xxxxx`，低 5 位是 `g
 ```
 
 看起来不错，事就这样成了
+
+http://www.witop-tech.com/compare-apa102-sk9822-led/
