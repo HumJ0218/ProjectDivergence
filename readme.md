@@ -13,6 +13,8 @@
     * NXP
       * [PCA9685](Docs/PCA9685.md) - [16 通道 12 比特 I2C 接口 PWM 发生器](https://www.nxp.com/products/analog/interfaces/ic-bus/ic-led-controllers/16-channel-12-bit-pwm-fm-plus-ic-bus-led-controller:PCA9685) 
   * SPI
+    * Sharp
+      * MemoryLCD - 夏普记忆液晶屏
     * Waveshare
       * EPD2in3Hat - [微雪 2.13 吋单色电子墨水屏模块](http://www.waveshare.net/wiki/2.13inch_e-Paper_HAT)
   * Util `各种硬件接口的工厂类`
@@ -24,3 +26,4 @@
 下列代码即将或已合并进 [dotnet/iot](https://github.com/dotnet/iot) 项目中，此处将不再更新：
 * PCA9685
 * MatrixKeyboard
+* MemoryLCD
