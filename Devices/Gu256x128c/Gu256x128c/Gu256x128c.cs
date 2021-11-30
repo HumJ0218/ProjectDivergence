@@ -17,7 +17,7 @@ namespace HumJ.Iot.Gu256x128c
         {
             serialPort = new SerialPort(portName, DefaultBaudRate, DefaultParity, DefaultDataBits, DefaultStopBits)
             {
-                DtrEnable = true
+                DtrEnable = DefaultDtrEnable
             };
         }
 
